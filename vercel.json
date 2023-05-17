@@ -1,7 +1,6 @@
 {
   "version": 2,
   "builds": [ 
-    { "src": "api/*.py", "use": "@vercel/python" },
     { "src": "app.py", "use": "@vercel/python" }
   ],
   "routes": [
@@ -10,9 +9,10 @@
       "dest": "/app.py"
     }
   ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" }
-  ],
+  "env": {
+    "FLASK_APP": "app.py",
+    "FLASK_ENV": "production"
+  },
   "build": {
     "command": "python -m pip install -r requirements.txt && flask run --port 8000",
     "environment": {
