@@ -1,9 +1,22 @@
 {
+  "version": 2,
   "builds": [ 
     { "src": "api/*.py", "use": "@vercel/python" },
     { "src": "app.py", "use": "@vercel/python" }
   ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.py"
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/api/index" }
-  ]
+  ],
+  "build": {
+    "command": "python -m pip install -r requirements.txt && flask run --port 8000",
+    "environment": {
+      "PYTHON_VERSION": "3.9.0"
+    }
+  }
 }
