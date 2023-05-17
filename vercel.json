@@ -8,15 +8,5 @@
       "src": "/(.*)",
       "dest": "/app.py"
     }
-  ],
-  "env": {
-    "FLASK_APP": "app.py",
-    "FLASK_ENV": "production"
-  },
-  "build": {
-    "command": "python -m pip install -r requirements.txt && flask run --port 8000",
-    "environment": {
-      "PYTHON_VERSION": "3.9.0"
-    }
-  }
+  ]
 }
